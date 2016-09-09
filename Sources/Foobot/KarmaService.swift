@@ -2,8 +2,6 @@ import Bot
 import Sugar
 import Foundation
 
-import Redbird
-
 enum KarmaAction {
     case Add
     case Remove
@@ -26,7 +24,7 @@ enum KarmaAction {
     }
 }
 
-struct KarmaBotOptions {
+struct KarmaOptions {
     let targets: [String]?
     
     let addText: String?
@@ -53,13 +51,13 @@ struct KarmaBotOptions {
     }
 }
 
-final class KarmaBot: SlackMessageService {
+final class KarmaService: SlackMessageService {
     //MARK: - Private Properties
-    private let options: KarmaBotOptions
+    private let options: KarmaOptions
     private let config: Config
     
     //MARK: - Lifecycle
-    init(options: KarmaBotOptions) {
+    init(options: KarmaOptions) {
         self.options = options
         
         let config = try! Config(
